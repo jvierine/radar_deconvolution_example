@@ -37,8 +37,7 @@ v[650:700]=1.0+1.0j
 plt.subplot(211)
 plt.plot(v.real)
 plt.plot(v.imag)
-plt.title("V")
-plt.title("V")
+plt.title("True scattered voltage")
 
 barker13=n.array([1,1,1,1,1,-1,-1,1,1,-1,1,-1,1],dtype=n.complex64)
 
@@ -46,7 +45,8 @@ m=simulate_meas(barker13,v,noise_std=0.01)
 plt.subplot(212)
 plt.plot(m.real)
 plt.plot(m.imag)
-plt.title("m")
+plt.title("Measurement (coded)")
+plt.tight_layout()
 plt.show()
 
 
@@ -55,14 +55,15 @@ v_mf = matched_filter(barker13,m)
 plt.subplot(211)
 plt.plot(v_mf.real)
 plt.plot(v_mf.imag)
-plt.title("MF")
+plt.title("Matched filter")
 
 
 v_if = inverse_filter(barker13,m)
 plt.subplot(212)
 plt.plot(v_if.real)
 plt.plot(v_if.imag)
-plt.title("IF")
+plt.title("Inverse filter")
+plt.tight_layout()
 plt.show()
 
 b169=kp(barker13,barker13)
@@ -91,6 +92,6 @@ plt.subplot(224)
 plt.plot(v_if2.real)
 plt.plot(v_if2.imag)
 plt.title("IF Barker 169")
-
+plt.tight_layout()
 plt.show()
 
